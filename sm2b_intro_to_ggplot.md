@@ -1,5 +1,5 @@
 
-# STAT 540 - Seminar 2b: Graphing using ggplot2
+# STAT 540 - Seminar 2b: Introduction to ggplot2
 
 ## Attributions
 
