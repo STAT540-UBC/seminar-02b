@@ -707,11 +707,11 @@ Here are a few more resources for your reference:
 ## Part 5: Deliverable
 
 **To submit for credit**: To earn full marks for this seminar, do the
-following. Reproduce the visual below using the `mpg` dataset. Then add
-informative labels to the x and y axes, and replace the legend titles
-“drv” and “cyl” with more informative text (hint: check out the `labs()`
-function). So your final plot should look like the image below, but with
-more informative labels.
+following. Reproduce the visual below using the `mpg` dataset by adding
+your code below. Then add informative labels to the x and y axes, and
+replace the legend titles “drv” and “cyl” with more informative text
+(hint: check out the `labs()` function). So your final plot should look
+like the image below, but with more informative labels.
 
 ![Challenge visual](images/mpg_data_challenge_visual.png)
 
