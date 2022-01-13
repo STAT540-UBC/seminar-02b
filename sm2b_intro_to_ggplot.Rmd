@@ -1,12 +1,16 @@
 ---
-output: github_document
+title: "STAT 540 - Seminar 2b: Introduction to ggplot2"
+output: 
+  github_document:
+    toc: true
+    toc_depth: 1
 ---
 
-# STAT 540 - Seminar 2b: Introduction to ggplot2
+# Preliminaries 
 
 ## Attributions
 
-This seminar was developed by [Eric Chu](https://github.com/echu113) with seminar materials previously designed by Gloria Li and Alice Zh and [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) by Garrett Grolemund and Hadley Wickham. It was later modified by Keegan Korthauer 
+This seminar was developed by [Eric Chu](https://github.com/echu113) with seminar materials previously designed by Gloria Li and Alice Zh and contains excerpts from [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) by Garrett Grolemund and Hadley Wickham. It was later modified by Keegan Korthauer.
 
 ## Learning Objectives
 
@@ -41,7 +45,7 @@ By the end of this seminar, you should
 * **ggplot2::scale_y_log10()** - Reverse y-axis. 
 * **ggplot2::coord_flip()** - Flip x and y axes. 
 
-## Part 1: First time ggplot-ing (contains excerpts from [Ch. 3 of R for Data Science](http://r4ds.had.co.nz/data-visualisation.html))
+# Part 1: First time ggplot-ing
 
 Open a new .Rmd file. This is where we will work on ggplot2. 
 
@@ -68,7 +72,7 @@ library(tidyverse)
 You only need to install a package once, but you need to reload it every time you start a new session. See [Packages required] for some additional help.
 
 
-### The mpg data frame
+## The mpg data frame
 
 Let's use our first graph to answer a question: Do cars with big engines use more fuel than cars with small engines? You probably already have an answer, but try to make your answer precise. What does the relationship between engine size and fuel efficiency look like? Is it positive? Negative? Linear? Nonlinear?
 
@@ -105,7 +109,7 @@ You build your graph by adding one or more layers to `ggplot()`. The function `g
 
 Each geom function in ggplot2 takes a mapping argument. This defines how variables in your dataset are mapped to visual properties. The mapping argument is always paired with `aes()`, and the x and y arguments of `aes()` specify which variables to map to the x and y axes. ggplot2 looks for the mapped variable in the data argument, in this case, `mpg`.
 
-### Your first (bare-bones) graphing template
+## Your first (bare-bones) graphing template
 
 Let’s turn this code into a reusable template for making graphs with ggplot2. To make a graph, we can replace the bracketed sections in the following code template with a dataset, a geom function, and a collection of mappings. The rest of this seminar will show you how to complete and extend this template to make different types of graphs. 
 
@@ -117,7 +121,7 @@ ggplot(data = <DATA>) +
 
 The rest of this seminar will show you how to complete and extend this template to make different types of graphs. We will begin with the `<MAPPINGS>` component. 
 
-### Exercise
+## Exercise
 
 Take 5 minutes to create a scatterplot of `hwy` vs `cyl`.
 
@@ -125,7 +129,7 @@ Take 5 minutes to create a scatterplot of `hwy` vs `cyl`.
 # YOUR CODE HERE
 ```
 
-### Aesthetic mappings 
+## Aesthetic mappings 
 
 In the plot below, one group of points (highlighted in red) seems to fall outside of the linear trend. These cars have a higher mileage than you might expect. How can you explain these cars?
 
@@ -189,7 +193,7 @@ Here, the color doesn’t convey information about a variable, but only changes 
 
 **IMPORTANT** - Take note of what goes inside or outside of `aes()` and what the corresponding effects are. Putting colour outside `aes()` and expecting the colors to map to some variable is a common rookie mistake.  
 
-### Exercise: 
+## Exercise: 
 
 What has gone wrong with this code? Explain why the points in the following plot are not blue. 
 
@@ -198,7 +202,7 @@ What has gone wrong with this code? Explain why the points in the following plot
       geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))
 ```
 
-## Part 2: The layered grammar
+# Part 2: The layered grammar
 
 Now you've seen some data visualizations made using ggplot2. Pretty neat, right?
 
@@ -208,7 +212,7 @@ In contrast, the power of ggplot2 lies in its layered grammar. Notice that the c
 
 If you’d like to learn more about the theoretical underpinnings of ggplot2, read more [here](http://vita.had.co.nz/papers/layered-grammar.pdf)
 
-### Basic concepts
+## Basic concepts
 
 **Layer**: The most important concept of ggplot2 is that graphics are built from different layers. This includes anything from the data used, the coordinate system, the axis labels, the plot’s title etc. This layered grammar is perhaps the most powerful feature of ggplot2. It allows one to build complex graphics by adding more and more layers to the basic graphics while each layer is simple enough to construct. Layers can contain one or more components such as data and aesthetic mapping, geometries, statistics, scaling etc. We will talk about some most common components next.
 
@@ -246,15 +250,15 @@ ggplot(data = <DATA>) +
 
 Note that this template doesn't include every possible use case. But it does a pretty good job illustrating the structure of a typical ggplot call. Notice how things are "layered up"?
 
-### How to use this template?
+## How to use this template?
 
 So far, you've seen the basic scatterplot with using `geom_point()` and `aes()` functionalities. Now, we will showcase a sample of the other functionalities so you have an idea of how to build more elaborate visualizations with the given template. 
 
-### <GEOM_FUNCTION>
+## <GEOM_FUNCTION>
 
 We can sub, or add in various geom functions.
 
-#### Adding a geom layer
+### Adding a geom layer
 
 As an example, let's add a smooth line (regression with loess) using `geom_smooth()` to our previous scatterplot of engine size against fuel efficiency.
 
@@ -269,7 +273,7 @@ Notice that `mapping = aes()` has been moved to the `ggplot()` call. This ensure
 
 Aside: How should you decide whether to put your `mapping = aes()` call in `ggplot()` or in each layer? If you have multiple layers, and want the mappings to be the same for each layer, you can save some repetition by placing it in `ggplot()`. But, if your plot needs to use different mappings in some layers than others, you should place these mappings in each layer separately. 
 
-#### Other types of geoms
+### Other types of geoms
 
 Now let's see what we can do with `geom_boxplot()`.
 
@@ -287,7 +291,7 @@ Note that we could have chosen to make a bar chart of the mean or median highway
 
 There are many more types of geoms, some of which will be explored in part 3.
 
-### <AXIS_LABEL_FUNCTION>
+## <AXIS_LABEL_FUNCTION>
 
 The axis labels are pretty ugly right now. Let's put in nicer look labels. 
 
@@ -299,7 +303,7 @@ ggplot(data = mpg,
   xlab("Vehicle Type")
 ```
 
-### <SCALE_FUNCTION>
+## <SCALE_FUNCTION>
 
 Let's plot the highway efficiency values on the log scale, just for fun. Do you notice what has changed?
 
@@ -312,7 +316,7 @@ ggplot(data = mpg,
   scale_y_log10()
 ```
 
-### <COORDINATE_FUNCTION>
+## <COORDINATE_FUNCTION>
 
 Let's add another "layer" to alter our coordinate system. By default, `coord_cartesian()` is used for `geom_point()` and `geom_bar()`. But we could flip the x and y axes, for example.
 
@@ -328,7 +332,7 @@ ggplot(data = mpg,
 ```
 
 
-### <FACET_FUNCTION> 
+## <FACET_FUNCTION> 
 
 A facet allows you to render multiple panels at once, one for each class of a variable. 
 
@@ -343,11 +347,11 @@ ggplot(data = mpg,
 
 There is also the `facet_grid()` function which can create facets based on more than one variable - read more [here](http://r4ds.had.co.nz/data-visualisation.html#facets). 
 
-## Part 3: Example gallery
+# Part 3: Example gallery
 
 We can combine various elements of geoms, aesthetics, facets, etc to produce a wide variety of plots. We have only scratched the surface. Here are a few more examples of different types of plots we might want to make. 
 
-#### Continuous variable as the third dimension
+### Continuous variable as the third dimension
 
 Lets color the data points by year. 
 
@@ -360,7 +364,7 @@ ggplot(data = mpg,
 
 Notice that ggplot makes a color gradient for showing the continuous variable year. Try a different variable, like `trans`. What happens?
 
-#### Combining facets and aesthetics
+### Combining facets and aesthetics
 
 To illustrate other types of plots we might make, here are several examples.
 
@@ -374,7 +378,7 @@ ggplot(data = mpg, aes(x = drv, y = hwy, color = class)) +
   ylab("highway map")
 ```
 
-#### Histograms
+### Histograms
 
 To build a histogram, we use the `geom_histogram()` geom. Here is a histogram of highway mpg.
 
@@ -383,7 +387,7 @@ ggplot(data = mpg, aes(x = hwy)) +
   geom_histogram()
 ```
 
-#### Density plots 
+### Density plots 
 
 To build a density plot, we use the `geom_density()` geom. Here is a smoothed density plot of highway mpg.
 
@@ -418,7 +422,7 @@ ggplot(data = mpg, aes(x = hwy, color = year)) +
 ```
 
 
-## Part 4: Final notes and additional resources
+# Part 4: Final notes and additional resources
 
 **We have not covered all possible visualizations**. The purpose of this seminar was to introduce ggplot2 and to give you the tools to develop other visualizations that may come your way in the future. Arguably, the most important takeway of this seminar is the layered grammar of ggplot2. Once you understand the core structure of the ggplot2 setup, it will be easy to navigate and use the package's numerous elements in order to produce any desired outcome. 
 
@@ -430,7 +434,7 @@ Here are a few more resources for your reference:
 * [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) by Garrett Grolemund and Hadley Wickham
 * [ggplot2-tutorial by Dr. Jenny Bryan](https://github.com/jennybc/ggplot2-tutorial)
 
-## Part 5: Deliverable
+# Part 5: Deliverable
 
 **To submit for credit**: To earn full marks for this seminar, do the following. Reproduce the visual below using the `mpg` dataset by adding your code below. Then add informative labels to the x and y axes, and replace the legend titles "drv" and "cyl" with more informative text (hint: check out the `labs()` function). So your final plot should look like the image below, but with more informative labels.
 

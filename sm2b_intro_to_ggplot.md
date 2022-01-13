@@ -1,13 +1,23 @@
+STAT 540 - Seminar 2b: Introduction to ggplot2
+================
 
-# STAT 540 - Seminar 2b: Introduction to ggplot2
+-   [Preliminaries](#preliminaries)
+-   [Part 1: First time ggplot-ing](#part-1-first-time-ggplot-ing)
+-   [Part 2: The layered grammar](#part-2-the-layered-grammar)
+-   [Part 3: Example gallery](#part-3-example-gallery)
+-   [Part 4: Final notes and additional
+    resources](#part-4-final-notes-and-additional-resources)
+-   [Part 5: Deliverable](#part-5-deliverable)
+
+# Preliminaries
 
 ## Attributions
 
 This seminar was developed by [Eric Chu](https://github.com/echu113)
 with seminar materials previously designed by Gloria Li and Alice Zh and
-[R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) by
-Garrett Grolemund and Hadley Wickham. It was later modified by Keegan
-Korthauer
+contains excerpts from [R for Data
+Science](http://r4ds.had.co.nz/data-visualisation.html) by Garrett
+Grolemund and Hadley Wickham. It was later modified by Keegan Korthauer.
 
 ## Learning Objectives
 
@@ -64,7 +74,7 @@ By the end of this seminar, you should
 -   **ggplot2::scale_y\_log10()** - Reverse y-axis.
 -   **ggplot2::coord_flip()** - Flip x and y axes.
 
-## Part 1: First time ggplot-ing (contains excerpts from [Ch. 3 of R for Data Science](http://r4ds.had.co.nz/data-visualisation.html))
+# Part 1: First time ggplot-ing
 
 Open a new .Rmd file. This is where we will work on ggplot2.
 
@@ -118,7 +128,7 @@ You only need to install a package once, but you need to reload it every
 time you start a new session. See [Packages
 required](#packages-required) for some additional help.
 
-### The mpg data frame
+## The mpg data frame
 
 Let’s use our first graph to answer a question: Do cars with big engines
 use more fuel than cars with small engines? You probably already have an
@@ -199,7 +209,7 @@ argument is always paired with `aes()`, and the x and y arguments of
 `aes()` specify which variables to map to the x and y axes. ggplot2
 looks for the mapped variable in the data argument, in this case, `mpg`.
 
-### Your first (bare-bones) graphing template
+## Your first (bare-bones) graphing template
 
 Let’s turn this code into a reusable template for making graphs with
 ggplot2. To make a graph, we can replace the bracketed sections in the
@@ -217,7 +227,7 @@ The rest of this seminar will show you how to complete and extend this
 template to make different types of graphs. We will begin with the
 `<MAPPINGS>` component.
 
-### Exercise
+## Exercise
 
 Take 5 minutes to create a scatterplot of `hwy` vs `cyl`.
 
@@ -225,7 +235,7 @@ Take 5 minutes to create a scatterplot of `hwy` vs `cyl`.
 # YOUR CODE HERE
 ```
 
-### Aesthetic mappings
+## Aesthetic mappings
 
 In the plot below, one group of points (highlighted in red) seems to
 fall outside of the linear trend. These cars have a higher mileage than
@@ -330,7 +340,7 @@ outside of `aes()`.
 what the corresponding effects are. Putting colour outside `aes()` and
 expecting the colors to map to some variable is a common rookie mistake.
 
-### Exercise:
+## Exercise:
 
 What has gone wrong with this code? Explain why the points in the
 following plot are not blue.
@@ -342,7 +352,7 @@ following plot are not blue.
 
 ![](sm2b_intro_to_ggplot_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
-## Part 2: The layered grammar
+# Part 2: The layered grammar
 
 Now you’ve seen some data visualizations made using ggplot2. Pretty
 neat, right?
@@ -363,7 +373,7 @@ If you’d like to learn more about the theoretical underpinnings of
 ggplot2, read more
 [here](http://vita.had.co.nz/papers/layered-grammar.pdf)
 
-### Basic concepts
+## Basic concepts
 
 **Layer**: The most important concept of ggplot2 is that graphics are
 built from different layers. This includes anything from the data used,
@@ -443,18 +453,18 @@ Note that this template doesn’t include every possible use case. But it
 does a pretty good job illustrating the structure of a typical ggplot
 call. Notice how things are “layered up”?
 
-### How to use this template?
+## How to use this template?
 
 So far, you’ve seen the basic scatterplot with using `geom_point()` and
 `aes()` functionalities. Now, we will showcase a sample of the other
 functionalities so you have an idea of how to build more elaborate
 visualizations with the given template.
 
-### <GEOM_FUNCTION>
+## <GEOM_FUNCTION>
 
 We can sub, or add in various geom functions.
 
-#### Adding a geom layer
+### Adding a geom layer
 
 As an example, let’s add a smooth line (regression with loess) using
 `geom_smooth()` to our previous scatterplot of engine size against fuel
@@ -484,7 +494,7 @@ by placing it in `ggplot()`. But, if your plot needs to use different
 mappings in some layers than others, you should place these mappings in
 each layer separately.
 
-#### Other types of geoms
+### Other types of geoms
 
 Now let’s see what we can do with `geom_boxplot()`.
 
@@ -509,7 +519,7 @@ informative.
 There are many more types of geoms, some of which will be explored in
 part 3.
 
-### <AXIS_LABEL_FUNCTION>
+## <AXIS_LABEL_FUNCTION>
 
 The axis labels are pretty ugly right now. Let’s put in nicer look
 labels.
@@ -524,7 +534,7 @@ ggplot(data = mpg,
 
 ![](sm2b_intro_to_ggplot_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
-### <SCALE_FUNCTION>
+## <SCALE_FUNCTION>
 
 Let’s plot the highway efficiency values on the log scale, just for fun.
 Do you notice what has changed?
@@ -540,7 +550,7 @@ ggplot(data = mpg,
 
 ![](sm2b_intro_to_ggplot_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
-### <COORDINATE_FUNCTION>
+## <COORDINATE_FUNCTION>
 
 Let’s add another “layer” to alter our coordinate system. By default,
 `coord_cartesian()` is used for `geom_point()` and `geom_bar()`. But we
@@ -559,7 +569,7 @@ ggplot(data = mpg,
 
 ![](sm2b_intro_to_ggplot_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
 
-### <FACET_FUNCTION>
+## <FACET_FUNCTION>
 
 A facet allows you to render multiple panels at once, one for each class
 of a variable.
@@ -582,14 +592,14 @@ There is also the `facet_grid()` function which can create facets based
 on more than one variable - read more
 [here](http://r4ds.had.co.nz/data-visualisation.html#facets).
 
-## Part 3: Example gallery
+# Part 3: Example gallery
 
 We can combine various elements of geoms, aesthetics, facets, etc to
 produce a wide variety of plots. We have only scratched the surface.
 Here are a few more examples of different types of plots we might want
 to make.
 
-#### Continuous variable as the third dimension
+### Continuous variable as the third dimension
 
 Lets color the data points by year.
 
@@ -607,7 +617,7 @@ ggplot(data = mpg,
 Notice that ggplot makes a color gradient for showing the continuous
 variable year. Try a different variable, like `trans`. What happens?
 
-#### Combining facets and aesthetics
+### Combining facets and aesthetics
 
 To illustrate other types of plots we might make, here are several
 examples.
@@ -624,7 +634,7 @@ ggplot(data = mpg, aes(x = drv, y = hwy, color = class)) +
 
 ![](sm2b_intro_to_ggplot_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
-#### Histograms
+### Histograms
 
 To build a histogram, we use the `geom_histogram()` geom. Here is a
 histogram of highway mpg.
@@ -638,7 +648,7 @@ ggplot(data = mpg, aes(x = hwy)) +
 
 ![](sm2b_intro_to_ggplot_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
 
-#### Density plots
+### Density plots
 
 To build a density plot, we use the `geom_density()` geom. Here is a
 smoothed density plot of highway mpg.
@@ -681,7 +691,7 @@ ggplot(data = mpg, aes(x = hwy, color = year)) +
 
 ![](sm2b_intro_to_ggplot_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
 
-## Part 4: Final notes and additional resources
+# Part 4: Final notes and additional resources
 
 **We have not covered all possible visualizations**. The purpose of this
 seminar was to introduce ggplot2 and to give you the tools to develop
@@ -704,7 +714,7 @@ Here are a few more resources for your reference:
 -   [ggplot2-tutorial by Dr. Jenny
     Bryan](https://github.com/jennybc/ggplot2-tutorial)
 
-## Part 5: Deliverable
+# Part 5: Deliverable
 
 **To submit for credit**: To earn full marks for this seminar, do the
 following. Reproduce the visual below using the `mpg` dataset by adding
