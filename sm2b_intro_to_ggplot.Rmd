@@ -20,7 +20,7 @@ By the end of this seminar, you should
 * be familiar with ggplot2’s layered grammar - for example, know the roles of aes, geom, stat, scale, etc
 * given a dataset, be able to render basic plots such as scatter plots, boxplots, density plots, and histograms
 * have practical experience exploring ggplot2 functions by tweaking rendered visualizations (mappings, colours, shapes, transformations, etc)
-* be able to navigate [the ggplot2 cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf) in order to develop a data visualization
+* be able to navigate [the ggplot2 cheatsheet](https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf) in order to develop a data visualization
 
 ## Packages required
 
@@ -46,8 +46,6 @@ By the end of this seminar, you should
 * **ggplot2::coord_flip()** - Flip x and y axes. 
 
 # Part 1: First time ggplot-ing
-
-Open a new .Rmd file. This is where we will work on ggplot2. 
 
 >"The simple graph has brought more information to the data analyst's mind than any other device." — John Tukey
 
@@ -429,7 +427,7 @@ ggplot(data = mpg, aes(x = hwy, color = year)) +
 Here are a few more resources for your reference: 
 
 * [ggplot2, part of the tidyverse](http://ggplot2.tidyverse.org/index.html)
-* [the ggplot2 cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf) 
+* [the ggplot2 cheat sheet](https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf) 
 * [The Layered Grammar of Graphics](http://vita.had.co.nz/papers/layered-grammar.pdf)
 * [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) by Garrett Grolemund and Hadley Wickham
 * [ggplot2-tutorial by Dr. Jenny Bryan](https://github.com/jennybc/ggplot2-tutorial)

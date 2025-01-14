@@ -1,13 +1,13 @@
 STAT 540 - Seminar 2b: Introduction to ggplot2
 ================
 
--   [Preliminaries](#preliminaries)
--   [Part 1: First time ggplot-ing](#part-1-first-time-ggplot-ing)
--   [Part 2: The layered grammar](#part-2-the-layered-grammar)
--   [Part 3: Example gallery](#part-3-example-gallery)
--   [Part 4: Final notes and additional
-    resources](#part-4-final-notes-and-additional-resources)
--   [Part 5: Deliverable](#part-5-deliverable)
+- [Preliminaries](#preliminaries)
+- [Part 1: First time ggplot-ing](#part-1-first-time-ggplot-ing)
+- [Part 2: The layered grammar](#part-2-the-layered-grammar)
+- [Part 3: Example gallery](#part-3-example-gallery)
+- [Part 4: Final notes and additional
+  resources](#part-4-final-notes-and-additional-resources)
+- [Part 5: Deliverable](#part-5-deliverable)
 
 # Preliminaries
 
@@ -23,60 +23,57 @@ Grolemund and Hadley Wickham. It was later modified by Keegan Korthauer.
 
 By the end of this seminar, you should
 
--   have an overall understanding of what ggplot2 is and have a sense of
-    what is it useful for, and what are its limitations
--   be familiar with ggplot2’s layered grammar - for example, know the
-    roles of aes, geom, stat, scale, etc
--   given a dataset, be able to render basic plots such as scatter
-    plots, boxplots, density plots, and histograms
--   have practical experience exploring ggplot2 functions by tweaking
-    rendered visualizations (mappings, colours, shapes, transformations,
-    etc)
--   be able to navigate [the ggplot2
-    cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
-    in order to develop a data visualization
+- have an overall understanding of what ggplot2 is and have a sense of
+  what is it useful for, and what are its limitations
+- be familiar with ggplot2’s layered grammar - for example, know the
+  roles of aes, geom, stat, scale, etc
+- given a dataset, be able to render basic plots such as scatter plots,
+  boxplots, density plots, and histograms
+- have practical experience exploring ggplot2 functions by tweaking
+  rendered visualizations (mappings, colours, shapes, transformations,
+  etc)
+- be able to navigate [the ggplot2
+  cheatsheet](https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf)
+  in order to develop a data visualization
 
 ## Packages required
 
--   [tidyverse](http://tidyverse.tidyverse.org/) (includes
-    [ggplot2](http://ggplot2.tidyverse.org/),
-    [dplyr](http://dplyr.tidyverse.org/),
-    [tidyr](http://tidyr.tidyverse.org/),
-    [readr](http://readr.tidyverse.org/),
-    [purrr](http://purrr.tidyverse.org/),
-    [tibble](http://tibble.tidyverse.org/))
-    -   Install by running ‘install.packages(“tidyverse”, dependencies =
-        TRUE)’
-    -   Note: If loading tidyverse with `library(tidyverse)` gives you
-        issues with package and R versions one possible solution would
-        be to:
-        -   close Rstudio
-        -   install the latest version of R from our [CRAN
-            mirror](https://mirror.its.sfu.ca/mirror/CRAN/)
-        -   Reopen Rstudio and try reinstalling tidyverse as before
+- [tidyverse](http://tidyverse.tidyverse.org/) (includes
+  [ggplot2](http://ggplot2.tidyverse.org/),
+  [dplyr](http://dplyr.tidyverse.org/),
+  [tidyr](http://tidyr.tidyverse.org/),
+  [readr](http://readr.tidyverse.org/),
+  [purrr](http://purrr.tidyverse.org/),
+  [tibble](http://tibble.tidyverse.org/))
+  - Install by running ‘install.packages(“tidyverse”, dependencies =
+    TRUE)’
+  - Note: If loading tidyverse with `library(tidyverse)` gives you
+    issues with package and R versions one possible solution would be
+    to:
+    - close Rstudio
+    - install the latest version of R from our [CRAN
+      mirror](https://mirror.its.sfu.ca/mirror/CRAN/)
+    - Reopen Rstudio and try reinstalling tidyverse as before
 
 ## Main functions used
 
--   **ggplot2::ggplot()** - Base function for using ggplot2. Lays out
-    the invisible ‘canvas’ for graphing.
--   **ggplot2::geom_point()** - Geom function for drawing data points in
-    scatterplots.
--   **ggplot2::geom_smooth()** - Geom function for drawing fitted lines
-    in trend charts.
--   **ggplot2::geom_density()** - Geom function for drawing density
-    plots.
--   **ggplot2::geom_boxplot()** - Geom function for drawing box plots.
--   **ggplot2::geom_histogram()** - Geom function for violin plots.
--   **ggplot2::facet_wrap()** - ggplot2 function for separating factor
-    levels into multiple graphs.
--   **ggplot2::xlab()** - Manually set x-axis label.
--   **ggplot2::ylab()** - Manually set y-axis label.
--   **ggplot2::scale_y\_log10()** - Reverse y-axis.
--   **ggplot2::coord_flip()** - Flip x and y axes.
+- **ggplot2::ggplot()** - Base function for using ggplot2. Lays out the
+  invisible ‘canvas’ for graphing.
+- **ggplot2::geom_point()** - Geom function for drawing data points in
+  scatterplots.
+- **ggplot2::geom_smooth()** - Geom function for drawing fitted lines in
+  trend charts.
+- **ggplot2::geom_density()** - Geom function for drawing density plots.
+- **ggplot2::geom_boxplot()** - Geom function for drawing box plots.
+- **ggplot2::geom_histogram()** - Geom function for violin plots.
+- **ggplot2::facet_wrap()** - ggplot2 function for separating factor
+  levels into multiple graphs.
+- **ggplot2::xlab()** - Manually set x-axis label.
+- **ggplot2::ylab()** - Manually set y-axis label.
+- **ggplot2::scale_y_log10()** - Reverse y-axis.
+- **ggplot2::coord_flip()** - Flip x and y axes.
 
 # Part 1: First time ggplot-ing
-
-Open a new .Rmd file. This is where we will work on ggplot2.
 
 > “The simple graph has brought more information to the data analyst’s
 > mind than any other device.” — John Tukey
@@ -95,16 +92,28 @@ several packages which are useful in most any data analysis.
 library(tidyverse)
 ```
 
-    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+    ## Warning: package 'ggplot2' was built under R version 4.3.2
 
-    ## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-    ## ✓ tibble  3.1.6     ✓ dplyr   1.0.7
-    ## ✓ tidyr   1.1.4     ✓ stringr 1.4.0
-    ## ✓ readr   2.1.1     ✓ forcats 0.5.1
+    ## Warning: package 'tidyr' was built under R version 4.3.2
 
+    ## Warning: package 'readr' was built under R version 4.3.2
+
+    ## Warning: package 'dplyr' was built under R version 4.3.2
+
+    ## Warning: package 'stringr' was built under R version 4.3.2
+
+    ## Warning: package 'lubridate' was built under R version 4.3.2
+
+    ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+    ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+    ## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+    ## ✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+    ## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+    ## ✔ purrr     1.0.2     
     ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    ## x dplyr::filter() masks stats::filter()
-    ## x dplyr::lag()    masks stats::lag()
+    ## ✖ dplyr::filter() masks stats::filter()
+    ## ✖ dplyr::lag()    masks stats::lag()
+    ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 
 The output of loading the tidyverse tells you which functions from the
 tidyverse conflict with functions in base R (or from other packages you
@@ -161,15 +170,15 @@ mpg
     ##  8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…
     ##  9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…
     ## 10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…
-    ## # … with 224 more rows
+    ## # ℹ 224 more rows
 
 Among the variables in mpg are:
 
--   `displ`, a car’s engine size, in litres.
+- `displ`, a car’s engine size, in litres.
 
--   `hwy`, a car’s fuel efficiency on the highway, in miles per gallon
-    (mpg). A car with a low fuel efficiency consumes more fuel than a
-    car with a high fuel efficiency when they travel the same distance.
+- `hwy`, a car’s fuel efficiency on the highway, in miles per gallon
+  (mpg). A car with a low fuel efficiency consumes more fuel than a car
+  with a high fuel efficiency when they travel the same distance.
 
 To learn about the other variables in `mpg`, open its help page by
 running `?mpg`.
@@ -421,16 +430,15 @@ list of scale functions available.
 
 **Additional layers**: Even more options are to add layers
 
--   [**Coordinate
-    systems**](https://ggplot2.tidyverse.org/reference/#section-coordinate-systems):
-    define how x and y aesthetics combine to position elements in the
-    plot
+- [**Coordinate
+  systems**](https://ggplot2.tidyverse.org/reference/#section-coordinate-systems):
+  define how x and y aesthetics combine to position elements in the plot
 
--   [**Facets**](https://ggplot2.tidyverse.org/reference/#section-facetting):
-    create multiple panels, each displaying subsets of the data
+- [**Facets**](https://ggplot2.tidyverse.org/reference/#section-facetting):
+  create multiple panels, each displaying subsets of the data
 
--   [**Guides**](https://ggplot2.tidyverse.org/reference/#section-guides-axes-and-legends):
-    additional control over axes and legends
+- [**Guides**](https://ggplot2.tidyverse.org/reference/#section-guides-axes-and-legends):
+  additional control over axes and legends
 
 ### New template with more layers
 
@@ -477,7 +485,7 @@ ggplot(data = mpg,
   geom_smooth()
 ```
 
-    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+    ## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'
 
 ![](sm2b_intro_to_ggplot_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
@@ -610,7 +618,14 @@ ggplot(data = mpg,
   geom_smooth()
 ```
 
-    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+    ## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+
+    ## Warning: The following aesthetics were dropped during statistical transformation:
+    ## colour.
+    ## ℹ This can happen when ggplot fails to infer the correct grouping structure in
+    ##   the data.
+    ## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+    ##   variable into a factor?
 
 ![](sm2b_intro_to_ggplot_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
@@ -689,6 +704,13 @@ ggplot(data = mpg, aes(x = hwy, color = year)) +
   geom_rug()
 ```
 
+    ## Warning: The following aesthetics were dropped during statistical transformation:
+    ## colour.
+    ## ℹ This can happen when ggplot fails to infer the correct grouping structure in
+    ##   the data.
+    ## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+    ##   variable into a factor?
+
 ![](sm2b_intro_to_ggplot_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
 
 # Part 4: Final notes and additional resources
@@ -703,16 +725,16 @@ order to produce any desired outcome.
 
 Here are a few more resources for your reference:
 
--   [ggplot2, part of the
-    tidyverse](http://ggplot2.tidyverse.org/index.html)
--   [the ggplot2 cheat
-    sheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
--   [The Layered Grammar of
-    Graphics](http://vita.had.co.nz/papers/layered-grammar.pdf)
--   [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html)
-    by Garrett Grolemund and Hadley Wickham
--   [ggplot2-tutorial by Dr. Jenny
-    Bryan](https://github.com/jennybc/ggplot2-tutorial)
+- [ggplot2, part of the
+  tidyverse](http://ggplot2.tidyverse.org/index.html)
+- [the ggplot2 cheat
+  sheet](https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf)
+- [The Layered Grammar of
+  Graphics](http://vita.had.co.nz/papers/layered-grammar.pdf)
+- [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) by
+  Garrett Grolemund and Hadley Wickham
+- [ggplot2-tutorial by Dr. Jenny
+  Bryan](https://github.com/jennybc/ggplot2-tutorial)
 
 # Part 5: Deliverable
 
@@ -723,7 +745,11 @@ replace the legend titles “drv” and “cyl” with more informative text
 (hint: check out the `labs()` function). So your final plot should look
 like the image below, but with more informative labels.
 
-![Challenge visual](images/mpg_data_challenge_visual.png)
+<figure>
+<img src="images/mpg_data_challenge_visual.png"
+alt="Challenge visual" />
+<figcaption aria-hidden="true">Challenge visual</figcaption>
+</figure>
 
 ``` r
 # YOUR CODE HERE
