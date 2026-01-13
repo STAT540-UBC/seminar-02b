@@ -52,7 +52,7 @@ By the end of this seminar, you should
     to:
     - close Rstudio
     - install the latest version of R from our [CRAN
-      mirror](https://mirror.its.sfu.ca/mirror/CRAN/)
+      mirror](https://cran.mirror.rafal.ca/)
     - Reopen Rstudio and try reinstalling tidyverse as before
 
 ## Main functions used
@@ -92,23 +92,13 @@ several packages which are useful in most any data analysis.
 library(tidyverse)
 ```
 
-    ## Warning: package 'ggplot2' was built under R version 4.3.2
-
-    ## Warning: package 'tidyr' was built under R version 4.3.2
-
-    ## Warning: package 'readr' was built under R version 4.3.2
-
-    ## Warning: package 'dplyr' was built under R version 4.3.2
-
-    ## Warning: package 'stringr' was built under R version 4.3.2
-
-    ## Warning: package 'lubridate' was built under R version 4.3.2
+    ## Warning: package 'ggplot2' was built under R version 4.4.3
 
     ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
     ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
     ## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-    ## ✔ ggplot2   3.5.0     ✔ tibble    3.2.1
-    ## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+    ## ✔ ggplot2   4.0.0     ✔ tibble    3.2.1
+    ## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
     ## ✔ purrr     1.0.2     
     ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
     ## ✖ dplyr::filter() masks stats::filter()
@@ -659,7 +649,7 @@ ggplot(data = mpg, aes(x = hwy)) +
   geom_histogram()
 ```
 
-    ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+    ## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 
 ![](sm2b_intro_to_ggplot_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
 

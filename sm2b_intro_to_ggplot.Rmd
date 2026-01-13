@@ -28,7 +28,7 @@ By the end of this seminar, you should
     * Install by running 'install.packages("tidyverse", dependencies = TRUE)'
     * Note: If loading tidyverse with `library(tidyverse)` gives you issues with package and R versions one possible solution would be to:
       + close Rstudio
-      + install the latest version of R from our [CRAN mirror](https://mirror.its.sfu.ca/mirror/CRAN/)
+      + install the latest version of R from our [CRAN mirror](https://cran.mirror.rafal.ca/)
       + Reopen Rstudio and try reinstalling tidyverse as before
 
 ## Main functions used
